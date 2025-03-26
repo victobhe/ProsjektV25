@@ -14,6 +14,9 @@ public class Controller {
     @FXML
     private Button Stand;  
     
+    @FXML
+    private Button Save;  
+    
 
     @FXML
     private Label operator4;
@@ -46,6 +49,12 @@ public class Controller {
     public void handleStand(){
         //dealer.play();
     }
+
+    @FXML
+    public void handleSave(){
+        
+    }
+
 
     public boolean didPlayerWin(){
         if (playerScore > 21){

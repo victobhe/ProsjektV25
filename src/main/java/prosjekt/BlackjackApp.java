@@ -17,7 +17,7 @@ public class BlackjackApp extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("BlackJack - Tap og vinn med samme sinn!");
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("app.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("nyttnavn.fxml"))));
         primaryStage.show();
     }
     }

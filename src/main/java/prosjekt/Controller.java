@@ -52,10 +52,10 @@ public class Controller {
 
     @FXML
     public void handleSave(){
-        
+
     }
 
-
+    @FXML
     public boolean didPlayerWin(){
         if (playerScore > 21){
             return false;

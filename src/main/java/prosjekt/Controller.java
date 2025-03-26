@@ -19,19 +19,24 @@ public class Controller {
     
 
     @FXML
-    private Label operator4;
+    private Label operator4; //Pengepung
+    
+    @FXML
+    private Label operator42;  //PlayerBett
+
 
     @FXML
     private Label totalSum;
 
     @FXML
-    private Slider bett;
+    private Slider slider;  //PlayerBett
 
 
 
     private int playerScore = 0;
     private int dealerScore = 0;
-    //private double penger = 100;
+    private double penger = 150;
+    private double bett;
     
     CardDeck deck = new CardDeck();
     CardHand player = new CardHand();
@@ -43,6 +48,7 @@ public class Controller {
         Card kort = deck.deal();
         player.addCard(kort);
         playerScore += kort.getValue();
+        updateScore();
     }
 
     @FXML
@@ -52,7 +58,19 @@ public class Controller {
 
     @FXML
     public void handleSave(){
+        //.saveToFile
+    }
+    
+    @FXML
+    public void handleSlider(){
+        slider.setMax(penger);
+        this.bett =  (int) slider.getValue();  
+        operator42.setText(bett + "");
+    }
 
+    @FXML
+    public void updateScore(){
+        totalSum.setText(playerScore + "");
     }
 
     @FXML
@@ -65,13 +83,15 @@ public class Controller {
         }
         return true;
     }
+
     @FXML
     public void updatePenger(){
         if (didPlayerWin()){
-            //penger *= 2;
-            operator4.setText("Hello");
+            this.penger = penger + bett;
+            operator4.setText(penger + "kr");
         }else{
-           // penger -= bett;
+           this.penger -= bett;
+           operator4.setText(penger + "kr");
         }
     }
 

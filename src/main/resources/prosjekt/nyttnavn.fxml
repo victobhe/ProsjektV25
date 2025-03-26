@@ -58,8 +58,8 @@
       <Text layoutX="78.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Ha det gøy!" />
       <Text layoutX="78.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- De fleste gir seg " wrappingWidth="205.119140625" />
       <Text layoutX="85.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rett før en stor seier!" />
-      <Slider fx:id="bett" layoutX="454.0" layoutY="87.0" />
-      <Text layoutX="456.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hvor mye vedder du:" />
+      <Slider fx:id="slider" layoutX="454.0" layoutY="87.0" onMouseReleased="#handleSlider" />
+      <Text layoutX="456.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hvor mye vedder du?" />
       <Text layoutX="461.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pengepung:" />
       <Text layoutX="435.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TotalSum:" />
       <Label fx:id="operator41" layoutX="461.0" layoutY="346.0" text="0">
@@ -67,5 +67,6 @@
             <Font size="29.0" />
          </font>
       </Label>
+      <Label fx:id="operator42" layoutX="509.0" layoutY="110.0" text="All in??" />
    </children>
 </AnchorPane>

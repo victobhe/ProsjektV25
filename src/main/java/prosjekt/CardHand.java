@@ -2,11 +2,8 @@ package prosjekt;
 
 import java.util.ArrayList;
 
-public class CardHand 
-{
-    public int pengePung;
+public class CardHand {
     public int cardHandSum;
-    
     ArrayList<Card> myCards = new ArrayList<>();
 
     public void addCard(Card card){

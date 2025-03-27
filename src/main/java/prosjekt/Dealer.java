@@ -8,9 +8,9 @@ public class Dealer {
     
     public ArrayList<Card> myCards = new ArrayList<>();
 
-    public Dealer(CardHand motspiller){
+    /* public Dealer(CardHand motspiller){
         this.mustBeat = motspiller.getSumCard();
-    }
+    } */
     
     public void addCard(Card card){
         myCards.add(card);
@@ -44,5 +44,7 @@ public class Dealer {
     public boolean under21(){
         return getSumCard() > 21;
     }
+
+    
     
 }

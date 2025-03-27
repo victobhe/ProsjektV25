@@ -37,8 +37,8 @@ public class Controller {
 
     private int playerScore = 0;
     private int dealerScore = 0;
-    private double penger = 150;
-    private double bett;
+    private double penger = 100;
+    private double bet;
     
     CardDeck deck = new CardDeck();
     CardHand player = new CardHand();

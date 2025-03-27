@@ -1,7 +1,9 @@
 package prosjekt;
 
-import java.util.concurrent.TimeUnit;
 
+import java.lang.Thread;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -11,26 +13,33 @@ import javafx.scene.control.Slider;
 public class Controller {
     
     //Knapper og div
-    @FXML private Button Hit;
+    @FXML 
+    private Button Hit;
     
-    @FXML
+    @FXML 
     private Button Stand;  
     
-    @FXML
+    @FXML 
     private Button Save;  
-    
 
-    @FXML
+    @FXML 
+    private Button Resett; 
+
+    
+    @FXML 
     private Label operator4; //Pengepung
     
-    @FXML
+    @FXML 
     private Label operator42;  //PlayerBet
 
+    @FXML 
+    private Label totalSum;  // totalsum til player
+    
+    @FXML 
+    private Label totalSumField;  // totalsum til Dealer
 
-    @FXML
-    private Label totalSum;
 
-    @FXML
+    @FXML 
     private Slider slider;  //PlayerBet
 
 
@@ -49,13 +58,15 @@ public class Controller {
     public void handleHit(){
         Card kort = deck.deal();
         player.addCard(kort);
-        playerScore += kort.getValue();
+        playerScore = player.getSumCard();
         updateScore();
     }
 
     @FXML
     public void handleStand(){
+        Hit.setDisable(true);
         play(player);
+        Stand.setDisable(true);
     }
 
     @FXML
@@ -69,10 +80,31 @@ public class Controller {
         this.bet =  (int) slider.getValue();  
         operator42.setText(bet + "");
     }
+    @FXML
+    public void handleReset(){
+        this.playerScore = 0;
+        this.dealerScore = 0;
+        player.returnCards();
+        dealer.returnCards();
+        deck.newDeck();
+        updateDealerScore();
+        updateScore();
+        Hit.setDisable(false);
+        Stand.setDisable(false);
+    }
 
     @FXML
     public void updateScore(){
-        totalSum.setText(playerScore + "");
+        if (playerScore >= 22){
+            Hit.setDisable(true);
+            Stand.onActionProperty();
+        }
+        totalSum.setText(String.valueOf(playerScore));
+    }
+    
+    @FXML
+    public void updateDealerScore(){
+        totalSumField.setText(String.valueOf(dealerScore));
     }
 
     @FXML
@@ -93,18 +125,21 @@ public class Controller {
         new Thread(() -> {
             try{
                 while (dealer.standOrHit()){
+                    updateDealerScore();
                     Card kort = deck.deal();
                     dealer.addCard(kort);
                     dealer.totalsum = dealer.getSumCard();
-                    TimeUnit.SECONDS.sleep(1);        
+                    Platform.runLater(() -> updateDealerScore());
+                    Thread.sleep(1000);      
                     }
                 this.dealerScore = dealer.getSumCard();
             }catch (InterruptedException e){
+                totalSumField.setText("Error");
                 e.printStackTrace();
             }
 
         }).start();
-
+        updatePenger();
     }
 
     @FXML
@@ -113,7 +148,7 @@ public class Controller {
             this.penger = penger + bet;
             operator4.setText(penger + "kr");
         } else {
-            this.penger -= bet;
+            this.penger = penger - bet;
             operator4.setText(penger + "kr");
         }
     }

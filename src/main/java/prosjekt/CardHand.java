@@ -18,6 +18,14 @@ public class CardHand {
     public int getSumCard(){
         int sum = 0;
         for (Card card : myCards) {
+            if (sum > 21){
+                for (Card card2 : myCards) {
+                    if (card2.getValue() == 11){
+                        card2.setValue(1);
+                        break;
+                    }
+                }
+            }
             sum += card.getValue();
         }
         return sum;
@@ -29,6 +37,10 @@ public class CardHand {
             sum += card.getValue();
         }
         return (sum < 21);
+    }
+
+    public void returnCards(){
+        this.myCards.clear();
     }
 
     }

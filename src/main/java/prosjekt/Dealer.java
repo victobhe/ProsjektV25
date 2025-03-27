@@ -44,7 +44,10 @@ public class Dealer {
     public boolean under21(){
         return getSumCard() > 21;
     }
-
+    
+    public void returnCards(){
+        this.myCards.clear();
+    }
     
     
 }

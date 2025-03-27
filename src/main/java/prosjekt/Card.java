@@ -36,6 +36,9 @@ public class Card {
     public char getSuit() {
         return suit;
     }
+    public void setValue(int i){
+        this.value = i;
+    }
 
     public String getFace() {
         return face;

@@ -11,10 +11,10 @@
 
 <AnchorPane fx:id="background" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prosjekt.Controller">
    <children>
-      <Button fx:id="Stand" layoutX="516.0" layoutY="352.0" onAction="#handleStand" prefHeight="32.0" prefWidth="70.0" text="Stand" />
+      <Button fx:id="Stand" disable="true" layoutX="516.0" layoutY="352.0" onAction="#handleStand" prefHeight="32.0" prefWidth="70.0" text="Stand" />
       <Label fx:id="operator4" layoutX="546.0" layoutY="23.0" text="100kr" />
-      <Button fx:id="Save" layoutX="516.0" layoutY="271.0" onAction="#handleSave" prefHeight="32.0" prefWidth="70.0" text="Save" />
-      <Button fx:id="Hit" layoutX="516.0" layoutY="308.0" onAction="#handleHit" prefHeight="35.0" prefWidth="70.0" text="Hit">
+      <Button fx:id="Save" disable="true" layoutX="516.0" layoutY="271.0" onAction="#handleSave" prefHeight="32.0" prefWidth="70.0" text="Save" />
+      <Button fx:id="Hit" disable="true" layoutX="516.0" layoutY="308.0" onAction="#handleHit" prefHeight="35.0" prefWidth="70.0" text="Hit">
          <font>
             <Font size="16.0" />
          </font>
@@ -73,7 +73,7 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Button fx:id="Reset" layoutX="516.0" layoutY="233.0" onAction="#handleReset" prefHeight="32.0" prefWidth="70.0" text="NewGame">
+      <Button fx:id="NewGame" layoutX="516.0" layoutY="233.0" onAction="#handleNewGame" prefHeight="32.0" prefWidth="70.0" text="NewGame">
          <font>
             <Font size="11.0" />
          </font>

@@ -1,14 +1,13 @@
 package prosjekt;
 
 
-import java.lang.Thread;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 
 
-public class Controller {
+public class Controllercopy{
     
     //Knapper og div
     @FXML 
@@ -51,21 +50,18 @@ public class Controller {
     CardDeck deck = new CardDeck();
     CardHand player = new CardHand();
     Dealer dealer = new Dealer();
-
+    HelpController help = new HelpController();
     
     @FXML
     private void handleHit(){
-        Card kort = deck.deal();
-        player.addCard(kort);
-        playerScore = player.getSumCard();
+        help.helphandleHit(deck, player, playerScore);
         updateScore();
     }
 
     @FXML
     private void handleStand(){
-        Hit.setDisable(true);
+        help.handleStand(Hit,Stand);
         play(player);
-        Stand.setDisable(true);
     }
 
     @FXML
@@ -111,35 +107,14 @@ public class Controller {
 
     @FXML
     private boolean didPlayerWin(){
-        if (playerScore > 21){
-            return false;
-        }
-        if (dealerScore < 22 && dealerScore > playerScore){
-            return false;
-        }
-        return true;
+        return help.helpdidPlayerWin(playerScore, dealerScore);
     }
     @FXML
     private void play(CardHand hand){
-        dealer.mustBeat = hand.getSumCard();
-        dealer.totalsum = dealer.getSumCard();
-            while (dealer.standOrHit()){
-                Card kort = deck.deal();
-                dealer.addCard(kort);
-                dealer.totalsum = dealer.getSumCard();
-                this.dealerScore = dealer.getSumCard();
-                updateDealerScore();
-                sleeper();
-            }
-            updatePenger();          
+        help.play(deck, hand, dealer, playerScore, dealerScore, totalSumField);
+        updatePenger();          
     }
-    private void sleeper(){
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("legge seg!");
-        }
-    }
+    
     @FXML
     private void updatePenger(){
         if (dealerScore == playerScore){
@@ -152,4 +127,6 @@ public class Controller {
             operator4.setText(penger + "kr");
         }
     }
+
+
 }

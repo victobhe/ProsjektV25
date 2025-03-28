@@ -3,6 +3,8 @@ package prosjekt;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javafx.scene.image.Image;
+
 public class CardDeck {
     ArrayList<Card> cards = new ArrayList<>();
 
@@ -74,5 +76,11 @@ public class CardDeck {
             }
         }
         shuffleDeck();
+    }
+
+    public Image getImage(Card card){
+        String path = "file:C:\\Users\\victo\\ProsjektV25\\src\\main\\resources\\prosjekt\\images\\cards\\" + card.getFace() + card.getSuit() + ".png";
+        Image image = new Image(path);
+        return image;
     }
 }

@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 public class Controller {
@@ -40,6 +42,29 @@ public class Controller {
     @FXML 
     private Slider slider;  //PlayerBet
 
+    @FXML
+    private ImageView hiddenCard;
+
+    @FXML
+    private ImageView Card1;
+    @FXML
+    private ImageView Card2;
+    @FXML
+    private ImageView Card3;
+    @FXML
+    private ImageView Card4;
+    @FXML
+    private ImageView Card5;
+    @FXML
+    private ImageView Dcard1;
+    @FXML
+    private ImageView Dcard2;
+    @FXML
+    private ImageView Dcard3;
+    @FXML
+    private ImageView Dcard4;
+
+
     //tanken er at man ikke kan starte spillet før et bet er lagt inn og at man da skal trykke på new game og få to kort
 
 
@@ -47,6 +72,7 @@ public class Controller {
     private int dealerScore = 0;
     private double penger = 100;
     private double bet;
+    private int ant_kort = 1;
     
     CardDeck deck = new CardDeck();
     CardHand player = new CardHand();
@@ -59,13 +85,13 @@ public class Controller {
         player.addCard(kort);
         playerScore = player.getSumCard();
         updateScore();
+        slider.setDisable(true);
     }
-
     @FXML
     private void handleStand(){
         Hit.setDisable(true);
-        play(player);
         Stand.setDisable(true);
+        play(player);
     }
 
     @FXML
@@ -89,8 +115,11 @@ public class Controller {
         Hit.setDisable(false);
         Stand.setDisable(false);
         Save.setDisable(false);
+        hiddenCard.setVisible(true);
         handleHit();
         handleHit();
+        slider.setDisable(false);
+        //hiddenCard.setManaged(true);
         dealer.addCard(deck.deal()); 
         this.dealerScore = dealer.getSumCard();
         updateDealerScore();

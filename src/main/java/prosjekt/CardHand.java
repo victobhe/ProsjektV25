@@ -2,7 +2,7 @@ package prosjekt;
 
 import java.util.ArrayList;
 
-public class CardHand {
+public class CardHand  implements CardGame{
     public int cardHandSum;
     ArrayList<Card> myCards = new ArrayList<>();
 

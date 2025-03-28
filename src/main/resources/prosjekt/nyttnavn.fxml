@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -78,5 +80,11 @@
             <Font size="11.0" />
          </font>
       </Button>
+      <ImageView fx:id="hiddenCard" fitHeight="93.0" fitWidth="63.0" layoutX="259.0" layoutY="77.0" style="visibility: false; -fx-managed: false;">
+         <image>
+            <Image url="@images/cards/back.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Card1" fitHeight="107.0" fitWidth="69.0" layoutX="32.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

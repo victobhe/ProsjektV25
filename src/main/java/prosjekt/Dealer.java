@@ -2,7 +2,7 @@ package prosjekt;
 
 import java.util.ArrayList;
 
-public class Dealer {
+public class Dealer implements CardGame{
     public int totalsum;
     public int mustBeat;
     

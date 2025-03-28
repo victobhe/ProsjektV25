@@ -60,7 +60,7 @@ public class Controllercopy{
 
     @FXML
     private void handleStand(){
-        help.handleStand(Hit,Stand);
+        help.helphandleStand(Hit,Stand);
         play(player);
     }
 

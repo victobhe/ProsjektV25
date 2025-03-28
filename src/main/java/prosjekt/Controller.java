@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
@@ -42,6 +41,7 @@ public class Controller {
     @FXML 
     private Slider slider;  //PlayerBet
 
+    //bilder av kort
     @FXML
     private ImageView hiddenCard;
 
@@ -77,7 +77,7 @@ public class Controller {
     CardDeck deck = new CardDeck();
     CardHand player = new CardHand();
     Dealer dealer = new Dealer();
-
+    HelpController help = new HelpController();
     
     @FXML
     private void handleHit(){
@@ -86,12 +86,33 @@ public class Controller {
         playerScore = player.getSumCard();
         updateScore();
         slider.setDisable(true);
+        switch (ant_kort) {
+            case 1:
+                Card1.setImage(deck.getImage(kort));
+                break;
+            case 2:
+                Card2.setImage(deck.getImage(kort));
+                break;
+            case 3:
+                Card3.setImage(deck.getImage(kort));
+                break;
+            case 4:
+                Card4.setImage(deck.getImage(kort));
+                break;
+            case 5:
+                Card5.setImage(deck.getImage(kort));
+                break;
+            default:
+                break;
+        }
+        ant_kort++;
     }
     @FXML
     private void handleStand(){
         Hit.setDisable(true);
         Stand.setDisable(true);
         play(player);
+
     }
 
     @FXML
@@ -116,13 +137,18 @@ public class Controller {
         Stand.setDisable(false);
         Save.setDisable(false);
         hiddenCard.setVisible(true);
+        help.resetTable(Card1, Card2, Card3, Card4, Card5);
+        this.ant_kort = 1;
         handleHit();
         handleHit();
+        Card kort = deck.deal();
+        dealer.addCard(kort); 
         slider.setDisable(false);
-        //hiddenCard.setManaged(true);
-        dealer.addCard(deck.deal()); 
         this.dealerScore = dealer.getSumCard();
         updateDealerScore();
+        Dcard1.setImage(deck.getImage(kort));
+        
+
     }
 
     @FXML
@@ -152,16 +178,38 @@ public class Controller {
     private void play(CardHand hand){
         dealer.mustBeat = hand.getSumCard();
         dealer.totalsum = dealer.getSumCard();
+        this.ant_kort = 1;
+        Card card = deck.deal();
+        dealer.addCard(deck.deal());
+        Dcard2.setImage(deck.getImage(card));
             while (dealer.standOrHit()){
                 Card kort = deck.deal();
                 dealer.addCard(kort);
+                switch (ant_kort) {
+                    case 2:
+                        Dcard3.setImage(deck.getImage(kort));
+                        break;    
+                    case 3:
+                        Dcard4.setImage(deck.getImage(kort));
+                        break;
+                    /* case 4:
+                        Dcard4.setImage(deck.getImage(kort));
+                        break; */
+                }
+                ant_kort++;
                 dealer.totalsum = dealer.getSumCard();
                 this.dealerScore = dealer.getSumCard();
                 updateDealerScore();
-                sleeper();
+                //sleeper();
             }
+            updateDealerScore();
             updatePenger();          
     }
+
+
+
+
+    @SuppressWarnings("unused") //gidder ikke vente når jeg skal teste koden
     private void sleeper(){
         try {
             Thread.sleep(1000);

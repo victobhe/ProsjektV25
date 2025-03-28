@@ -202,8 +202,8 @@ public class Controller {
                 updateDealerScore();
                 //sleeper();
             }
-            updateDealerScore();
-            updatePenger();          
+        updateDealerScore();
+        updatePenger();          
     }
 
 

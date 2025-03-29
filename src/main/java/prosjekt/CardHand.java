@@ -17,16 +17,17 @@ public class CardHand  implements CardGame{
 
     public int getSumCard(){
         int sum = 0;
+        int ess = 0;
+
         for (Card card : myCards) {
-            if (sum > 21){
-                for (Card card2 : myCards) {
-                    if (card2.getValue() == 11){
-                        card2.setValue(1);
-                        break;
-                    }
-                }
+            if (card.getValue() == 11){
+                ess++;
             }
             sum += card.getValue();
+        }
+        while (sum > 21 && ess > 0){
+            sum -= 10;
+            ess--;
         }
         return sum;
     }
@@ -42,5 +43,16 @@ public class CardHand  implements CardGame{
     public void returnCards(){
         this.myCards.clear();
     }
-
+    public static void main(String[] args) {
+        Card kort1 = new Card('S', 11);
+        Card kort2 = new Card('S', 9);
+        Card kort3 = new Card('S', 3);
+        CardHand hand = new CardHand();
+        hand.addCard(kort1);
+        hand.addCard(kort2);
+        System.out.println(hand.getSumCard());
+        hand.addCard(kort3);
+        System.out.println(hand.getSumCard());
     }
+    }
+    

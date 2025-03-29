@@ -24,8 +24,17 @@ public class Dealer implements CardGame{
 
     public int getSumCard(){
         int sum = 0;
+        int ess = 0;
+
         for (Card card : myCards) {
+            if (card.getValue() == 11){
+                ess++;
+            }
             sum += card.getValue();
+        }
+        while (sum > 21 && ess > 0){
+            sum -= 10;
+            ess--;
         }
         return sum;
     }

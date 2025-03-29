@@ -42,9 +42,7 @@ public class Controller {
     private Slider slider;  //PlayerBet
 
     //bilder av kort
-    @FXML
-    private ImageView hiddenCard;
-
+    
     @FXML
     private ImageView Card1;
     @FXML
@@ -56,6 +54,8 @@ public class Controller {
     @FXML
     private ImageView Card5;
     @FXML
+    private ImageView hiddenCard;
+    @FXML
     private ImageView Dcard1;
     @FXML
     private ImageView Dcard2;
@@ -63,6 +63,8 @@ public class Controller {
     private ImageView Dcard3;
     @FXML
     private ImageView Dcard4;
+    @FXML
+    private ImageView Dcard5;
 
 
     //tanken er at man ikke kan starte spillet før et bet er lagt inn og at man da skal trykke på new game og få to kort
@@ -72,7 +74,7 @@ public class Controller {
     private int dealerScore = 0;
     private double penger = 100;
     private double bet;
-    private int ant_kort = 1;
+    private int ant_kort = 1; //antall kort trukket, brukes både til player og dealer
     
     CardDeck deck = new CardDeck();
     CardHand player = new CardHand();
@@ -137,7 +139,7 @@ public class Controller {
         Stand.setDisable(false);
         Save.setDisable(false);
         hiddenCard.setVisible(true);
-        help.resetTable(Card1, Card2, Card3, Card4, Card5);
+        help.resetTable(Card1, Card2, Card3, Card4, Card5, Dcard1, Dcard2, Dcard3, Dcard4);
         this.ant_kort = 1;
         handleHit();
         handleHit();
@@ -153,6 +155,7 @@ public class Controller {
 
     @FXML
     private void updateScore(){
+        this.playerScore = player.getSumCard();
         if (playerScore >= 22){
             Hit.setDisable(true);
         }
@@ -161,6 +164,7 @@ public class Controller {
     
     @FXML
     private void updateDealerScore(){
+        this.dealerScore = dealer.getSumCard();
         totalSumField.setText(String.valueOf(dealerScore));
     }
 
@@ -186,15 +190,15 @@ public class Controller {
                 Card kort = deck.deal();
                 dealer.addCard(kort);
                 switch (ant_kort) {
-                    case 2:
+                    case 1:
                         Dcard3.setImage(deck.getImage(kort));
                         break;    
-                    case 3:
+                    case 2:
                         Dcard4.setImage(deck.getImage(kort));
                         break;
-                    /* case 4:
-                        Dcard4.setImage(deck.getImage(kort));
-                        break; */
+                    case 3:
+                        Dcard5.setImage(deck.getImage(kort));
+                        break;
                 }
                 ant_kort++;
                 dealer.totalsum = dealer.getSumCard();

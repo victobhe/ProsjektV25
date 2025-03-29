@@ -15,12 +15,16 @@ public class HelpController {
     //jeg tror ikke vi trenger å bruke denne her men bare begynte siden ja...
     public int ant_kort = 1;
     
-    protected void resetTable(ImageView a, ImageView b, ImageView c, ImageView d, ImageView e  ){
+    protected void resetTable(ImageView a, ImageView b, ImageView c, ImageView d, ImageView e, ImageView f, ImageView g, ImageView h, ImageView i ){
         a.setImage(null);
         b.setImage(null);
         c.setImage(null);
         d.setImage(null);
         e.setImage(null);
+        f.setImage(null);
+        g.setImage(null);
+        h.setImage(null);
+        i.setImage(null);
 
     }
     

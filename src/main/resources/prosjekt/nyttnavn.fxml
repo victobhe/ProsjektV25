@@ -94,5 +94,6 @@
       <ImageView fx:id="Dcard1" fitHeight="107.0" fitWidth="69.0" layoutX="274.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Dcard3" fitHeight="107.0" fitWidth="69.0" layoutX="300.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Dcard4" fitHeight="107.0" fitWidth="69.0" layoutX="326.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Dcard5" fitHeight="107.0" fitWidth="69.0" layoutX="343.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

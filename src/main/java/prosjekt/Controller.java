@@ -139,7 +139,7 @@ public class Controller {
         Stand.setDisable(false);
         Save.setDisable(false);
         hiddenCard.setVisible(true);
-        help.resetTable(Card1, Card2, Card3, Card4, Card5, Dcard1, Dcard2, Dcard3, Dcard4);
+        help.resetTable(Card1, Card2, Card3, Card4, Card5, Dcard1, Dcard2, Dcard3, Dcard4, Dcard5);
         this.ant_kort = 1;
         handleHit();
         handleHit();
@@ -156,10 +156,10 @@ public class Controller {
     @FXML
     private void updateScore(){
         this.playerScore = player.getSumCard();
+        totalSum.setText(String.valueOf(playerScore));
         if (playerScore >= 22){
             Hit.setDisable(true);
         }
-        totalSum.setText(String.valueOf(playerScore));
     }
     
     @FXML
@@ -181,12 +181,13 @@ public class Controller {
     @FXML
     private void play(CardHand hand){
         dealer.mustBeat = hand.getSumCard();
-        dealer.totalsum = dealer.getSumCard();
+        //dealer.totalsum = dealer.getSumCard();
         this.ant_kort = 1;
         Card card = deck.deal();
-        dealer.addCard(deck.deal());
+        dealer.addCard(card);
         Dcard2.setImage(deck.getImage(card));
             while (dealer.standOrHit()){
+                System.out.println(dealerScore);
                 Card kort = deck.deal();
                 dealer.addCard(kort);
                 switch (ant_kort) {
@@ -201,9 +202,6 @@ public class Controller {
                         break;
                 }
                 ant_kort++;
-                dealer.totalsum = dealer.getSumCard();
-                this.dealerScore = dealer.getSumCard();
-                updateDealerScore();
                 //sleeper();
             }
         updateDealerScore();

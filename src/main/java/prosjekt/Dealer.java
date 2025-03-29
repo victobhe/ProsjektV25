@@ -14,7 +14,7 @@ public class Dealer implements CardGame{
     
     public void addCard(Card card){
         myCards.add(card);
-        totalsum += card.getValue();
+        //totalsum += card.getValue();
     }
 
     //Tror at denne blir viktig når man skal implementere enkeltkort som skal dukke opp på skjermen.
@@ -27,10 +27,10 @@ public class Dealer implements CardGame{
         int ess = 0;
 
         for (Card card : myCards) {
+            sum += card.getValue();
             if (card.getValue() == 11){
                 ess++;
             }
-            sum += card.getValue();
         }
         while (sum > 21 && ess > 0){
             sum -= 10;
@@ -38,9 +38,11 @@ public class Dealer implements CardGame{
         }
         return sum;
     }
-    //dealer er alltid nødt til å slå summen til motspiller, men dersom det er flere spillere skal dealer stå på x>17 og hitte på x<17
-    //returnerer true om man skal hitte
     public boolean standOrHit() {
+        this.totalsum = getSumCard();
+        if (!under21()){
+            return false;
+        }
         if (mustBeat > 21){
             return false;
         }
@@ -51,7 +53,7 @@ public class Dealer implements CardGame{
     }
 
     public boolean under21(){
-        return getSumCard() > 21;
+        return getSumCard() < 21;
     }
     
     public void returnCards(){

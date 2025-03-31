@@ -1,5 +1,6 @@
 package prosjekt;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -78,6 +79,11 @@ public class CardDeck {
         shuffleDeck();
     }
 
+    /* public Image getImage(Card card){
+        String path = "resources/prosjekt/images/cards/" + card.getFace() + card.getSuit() + ".png";
+        Image image = new Image(path);
+        return image;
+    } */
     public Image getImage(Card card){
         String path = "file:C:\\Users\\victo\\ProsjektV25\\src\\main\\resources\\prosjekt\\images\\cards\\" + card.getFace() + card.getSuit() + ".png";
         Image image = new Image(path);

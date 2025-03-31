@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 
 public class CardDeck {
     ArrayList<Card> cards = new ArrayList<>();
+    String path;
 
 
     public CardDeck(){
@@ -85,7 +86,8 @@ public class CardDeck {
         return image;
     } */
     public Image getImage(Card card){
-        String path = "file:C:\\Users\\victo\\ProsjektV25\\src\\main\\resources\\prosjekt\\images\\cards\\" + card.getFace() + card.getSuit() + ".png";
+        String filepath = System.getProperty("user.dir");
+        String path =  "file:" + filepath + "\\src\\main\\resources\\prosjekt\\images\\cards\\" + card.getFace() + card.getSuit() + ".png";
         Image image = new Image(path);
         return image;
     }

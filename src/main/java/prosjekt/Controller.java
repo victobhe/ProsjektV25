@@ -2,7 +2,6 @@ package prosjekt;
 
 import java.io.IOException;
 import java.lang.Thread;
-import java.util.concurrent.TimeUnit;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;

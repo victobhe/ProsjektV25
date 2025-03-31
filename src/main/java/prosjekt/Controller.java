@@ -1,5 +1,6 @@
 package prosjekt;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javafx.fxml.FXML;
@@ -59,8 +60,8 @@ public class Controller {
     }
 
     @FXML
-    public void handleSave(){
-        SaveScore.Save((playerScore + dealerScore), penger);
+    public void handleSave() throws IOException {
+        Score.Save((playerScore + dealerScore), penger);
     }
     
     @FXML

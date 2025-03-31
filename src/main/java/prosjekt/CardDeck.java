@@ -7,8 +7,6 @@ import javafx.scene.image.Image;
 
 public class CardDeck {
     ArrayList<Card> cards = new ArrayList<>();
-    String path;
-
 
     public CardDeck(){
         for (int i = 0; i < 4; i++) {

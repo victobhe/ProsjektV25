@@ -5,8 +5,14 @@ public class Card {
     private String face;
     private int value;
     
-    public Card(char suit, int face) {
+    public Card(char suit, int face) throws IllegalArgumentException {
+        if (suit != 'H' && suit != 'D' && suit != 'C' && suit != 'S') {
+            throw new IllegalArgumentException("The suit of the card must be one of H, D, C and S");
+        }
         this.suit = suit;
+        if (face <= 0 || face >= 14) {
+            throw new IllegalArgumentException("The face of the card must be a value equal to or higher than 1 and equal to or lower than 13");
+        }
         if (face >= 2 && face <= 10) {
             this.face = Integer.toString(face);
             this.value = face;

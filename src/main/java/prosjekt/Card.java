@@ -43,6 +43,9 @@ public class Card {
         return suit;
     }
     public void setValue(int i){
+        if (i < 1 || i > 11){
+            throw new IllegalArgumentException();
+        }
         this.value = i;
     }
 

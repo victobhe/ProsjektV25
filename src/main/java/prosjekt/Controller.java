@@ -1,13 +1,11 @@
 package prosjekt;
 
-
 import java.lang.Thread;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
-
 
 public class Controller {
     
@@ -36,6 +34,15 @@ public class Controller {
     
     @FXML 
     private Label totalSumField;  // totalsum til Dealer
+
+    @FXML 
+    private Label forsteplass;  // plasser til leaderboard
+
+    @FXML 
+    private Label andreplass;
+
+    @FXML 
+    private Label tredjeplass;
 
 
     @FXML 
@@ -80,6 +87,7 @@ public class Controller {
     CardHand player = new CardHand();
     Dealer dealer = new Dealer();
     HelpController help = new HelpController();
+    FindScore findScore = new FindScore();
     
     @FXML
     private void handleHit(){
@@ -114,12 +122,13 @@ public class Controller {
         Hit.setDisable(true);
         Stand.setDisable(true);
         play(player);
-
     }
 
     @FXML
     private void handleSave(){
         SaveScore.Save((playerScore + dealerScore), penger);
+        penger = 100;
+        operator4.setText(penger + "kr");
     }
     
     @FXML
@@ -130,6 +139,9 @@ public class Controller {
     }
     @FXML
     private void handleNewGame(){
+        forsteplass.setText("1. " + findScore.findFirstPlace() + "kr");
+        andreplass.setText("2. " + findScore.findSecondPlace() + "kr");
+        tredjeplass.setText("3. " + findScore.findThirdPlace() + "kr");
         this.playerScore = 0;
         this.dealerScore = 0;
         player.returnCards();
@@ -202,7 +214,7 @@ public class Controller {
                         break;
                 }
                 ant_kort++;
-                //sleeper();
+                sleeper();
             }
         updateDealerScore();
         updatePenger();          
@@ -211,7 +223,7 @@ public class Controller {
 
 
 
-    @SuppressWarnings("unused") //gidder ikke vente når jeg skal teste koden
+    //@SuppressWarnings("unused") //gidder ikke vente når jeg skal teste koden
     private void sleeper(){
         try {
             Thread.sleep(1000);

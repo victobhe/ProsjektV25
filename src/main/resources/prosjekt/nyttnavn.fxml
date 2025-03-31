@@ -62,7 +62,7 @@
       <Text layoutX="85.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rett før en stor seier!" />
       <Slider fx:id="slider" layoutX="454.0" layoutY="87.0" onMouseReleased="#handleSlider" />
       <Text layoutX="456.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hvor mye vedder du?" />
-      <Text layoutX="461.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pengepung:" />
+      <Text layoutX="30.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LeaderBoard:" />
       <Text layoutX="435.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TotalSum:" />
       <Label fx:id="totalSum" layoutX="461.0" layoutY="346.0" text="0">
          <font>
@@ -95,5 +95,9 @@
       <ImageView fx:id="Dcard3" fitHeight="107.0" fitWidth="69.0" layoutX="300.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Dcard4" fitHeight="107.0" fitWidth="69.0" layoutX="326.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Dcard5" fitHeight="107.0" fitWidth="69.0" layoutX="343.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="forsteplass" layoutX="63.0" layoutY="192.0" text="1. 100kr" />
+      <Label fx:id="andreplass" layoutX="63.0" layoutY="209.0" text="2. 100kr" />
+      <Label fx:id="tredjeplass" layoutX="63.0" layoutY="225.0" text="3. 100kr" />
+      <Text layoutX="469.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PengePung:" />
    </children>
 </AnchorPane>

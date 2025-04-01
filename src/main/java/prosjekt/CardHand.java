@@ -11,8 +11,8 @@ public class CardHand  implements CardGame{
             myCards.add(card);
         }
     }
-    public Card getLastCard(){
-        return myCards.get(-1);
+    public Card getFirstCard(){
+        return myCards.get(0);
     }
 
     public int getSumCard(){

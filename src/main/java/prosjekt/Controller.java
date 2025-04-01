@@ -80,7 +80,7 @@ public class Controller {
 
     private int playerScore = 0;
     private int dealerScore = 0;
-    private double penger = 100;
+    double penger = 100;
     private double bet;
     private int ant_kort = 1; //antall kort trukket, brukes både til player og dealer
     

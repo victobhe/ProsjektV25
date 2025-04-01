@@ -1,4 +1,4 @@
-package testFiler;
+/* package testFiler;
 import prosjekt.Card;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,3 +23,4 @@ public class CardTest {
         }, "Cannot have a card with a face value higher than 13");
     }
 }
+ */

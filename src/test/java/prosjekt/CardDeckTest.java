@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 import org.junit.jupiter.api.Test;
 
 public class CardDeckTest {
@@ -67,6 +70,14 @@ public class CardDeckTest {
 
 @Test
     void testReadWrite() {
+        try {
+            PrintWriter printer = new PrintWriter("scores.txt");
+            printer.print("100" + " \n");
+            printer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         CardDeck deck2 = new CardDeck();
         deck2.shuffleDeck();
         SaveScore.Save(20,100000);

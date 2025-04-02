@@ -6,11 +6,17 @@ public class CardHand  implements CardGame{
     public int cardHandSum;
     ArrayList<Card> myCards = new ArrayList<>();
 
+    public CardHand() {
+        myCards = new ArrayList<>();
+        cardHandSum = 0;
+    }
+
     public void addCard(Card card){
         if (under21()){
             myCards.add(card);
         }
     }
+
     public Card getFirstCard(){
         return myCards.get(0);
     }
@@ -43,16 +49,5 @@ public class CardHand  implements CardGame{
     public void returnCards(){
         this.myCards.clear();
     }
-    public static void main(String[] args) {
-        Card kort1 = new Card('S', 11);
-        Card kort2 = new Card('S', 9);
-        Card kort3 = new Card('S', 3);
-        CardHand hand = new CardHand();
-        hand.addCard(kort1);
-        hand.addCard(kort2);
-        System.out.println(hand.getSumCard());
-        hand.addCard(kort3);
-        System.out.println(hand.getSumCard());
-    }
-    }
+}
     

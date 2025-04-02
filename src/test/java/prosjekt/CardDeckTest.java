@@ -68,13 +68,15 @@ public class CardDeckTest {
     }
 
     @Test
-    public void testReadWrite() {
+    @DisplayName("Checks that the save() method correctly saves a score to the save file, and can be read")
+    public void testReadWrite() throws FileNotFoundException {
         try {
             PrintWriter printer = new PrintWriter("scores.txt");
             printer.print("100" + " \n");
             printer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            throw new FileNotFoundException("The scores.txt file could not be found");
         }
 
         CardDeck deck2 = new CardDeck();
@@ -82,17 +84,17 @@ public class CardDeckTest {
         SaveScore.Save(20,100000);
         double mellom = Double.parseDouble(find.findFirstPlace());
         int x = (int) mellom;
-        assertEquals(100000, x);
+        assertEquals(100000, x, "The score was not correctly written to the file, or could not be correctly read");
 
         SaveScore.Save(20,20000);
         double mellom2 = Double.parseDouble(find.findSecondPlace());
         int y = (int) mellom2;
-        assertEquals(20000, y);
+        assertEquals(20000, y, "The score was not correctly written to the file, or could not be correctly read");
 
         SaveScore.Save(20,3000);
         double mellom3 = Double.parseDouble(find.findThirdPlace());
         int z = (int) mellom3;
-        assertEquals(3000, z);
+        assertEquals(3000, z, "The score was not correctly written to the file, or could not be correctly read");
         
         
         

@@ -61,7 +61,7 @@ public class Controllercopy{
     @FXML
     private void handleStand(){
         help.helphandleStand(Hit,Stand);
-        play(player);
+        //play(player);
     }
 
     @FXML
@@ -109,11 +109,11 @@ public class Controllercopy{
     private boolean didPlayerWin(){
         return help.helpdidPlayerWin(playerScore, dealerScore);
     }
-    @FXML
+   /*  @FXML
     private void play(CardHand hand){
         help.play(deck, hand, dealer, playerScore, dealerScore, totalSumField);
         updatePenger();          
-    }
+    } */
     
     @FXML
     private void updatePenger(){

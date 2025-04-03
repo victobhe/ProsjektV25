@@ -117,6 +117,9 @@ public class Controller {
                 break;
         }
         ant_kort++;
+        if (playerScore > 21){
+            Hit.setDisable(true);
+        }
     }
     @FXML
     private void handleStand(){
@@ -170,7 +173,7 @@ public class Controller {
     private void updateScore(){
         this.playerScore = player.getSumCard();
         totalSum.setText(String.valueOf(playerScore));
-        if (playerScore >= 22){
+        if (playerScore > 21){
             Hit.setDisable(true);
         }
     }

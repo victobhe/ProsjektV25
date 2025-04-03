@@ -38,17 +38,27 @@ public class CardDeck {
         return cards.size();
     }
 
-    public Card getCard(int y){
+    public Card getCard(int y) throws IllegalArgumentException {
+        if (y < 0) {
+            throw new IllegalArgumentException("The index of the wanted card must be a positive value");
+        }
+        if (y >= cards.size()) {
+            throw new IllegalArgumentException("The index of the wanted card cannot be equal to or higher than the amount of cards in the deck");
+        }
         Card card = cards.get(y);
         return card;
     }
 
-    public void shuffleDeck() {
-        Collections.shuffle(cards);
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 
     public Card deal(){
         return cards.remove(0);
+    }
+
+    public void shuffleDeck() {
+        Collections.shuffle(cards);
     }
 
     public void newDeck(){

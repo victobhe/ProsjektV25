@@ -21,11 +21,11 @@ public class SaveScore {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 String formattedDate = date.format(formatter);
                 writer.write(formattedDate + "      Round: " + round + " | Balance: " + balance + " \n"); */
-                writer.write((int)balance + " \n");;
+                writer.write((int)balance + " \n");
                 writer.close();
             } catch (IOException e) {
-                System.out.println("An error occurred attempting to save the score");
                 e.printStackTrace();
+                throw new IOException("An error occurred attempting to save the score");
             }
         } catch (IOException e) {
             System.out.println("An error occurred attempting to save the score");
